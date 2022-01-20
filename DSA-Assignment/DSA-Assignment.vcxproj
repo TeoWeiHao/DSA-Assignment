@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Booking.cpp" />
+    <ClCompile Include="Checkin.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Booking.h" />
+    <ClInclude Include="Checkin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
