@@ -2,10 +2,23 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
+
+#include <string>
+#include <vector>
 #include "Booking.h"
 using namespace std;
 
 void Menu();
+void AddBooking(Booking& bookingList);
+void CheckIn(Booking& bookingList);
+void InitBookingList(Booking& bookingList);
+
+void InitBookingList()
+{
+	//read csv file into array list
+}
 
 void AddBooking() 
 {
@@ -28,9 +41,15 @@ void AddBooking()
 
 }
 
+void checkIn()
+{
+
+}
+
 int main()
 {
-	Booking RoomList;
+	Booking bookingList;
+	//InitBookingList(bookingList);
 	int option = 0;
 	switch (option)
 	{
