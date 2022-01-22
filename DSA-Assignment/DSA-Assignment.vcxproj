@@ -140,12 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Booking.cpp" />
-    <ClCompile Include="Checkin.cpp" />
+    <ClCompile Include="CheckIn.cpp" />
+    <ClCompile Include="DateTime.cpp" />
+    <ClCompile Include="Guest.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
+    <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Booking.h" />
-    <ClInclude Include="Checkin.h" />
+    <ClInclude Include="CheckIn.h" />
+    <ClInclude Include="Guest.h" />
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

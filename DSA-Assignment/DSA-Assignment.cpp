@@ -2,10 +2,69 @@
 //
 
 #include <iostream>
+#include "Booking.h"
+using namespace std;
+
+void Menu();
+
+void AddBooking() 
+{
+	Booking pList;
+	int bookingId;
+	string name;
+	string bookingDate;
+	int numOfGuest;
+	string request;
+	cout << "Enter Booking Id: ";
+	cin >> bookingId;
+	cout << "Enter Booking Date: ";
+	cin >> bookingId;
+	cout << "Enter Name: ";
+	cin >> name;
+	cout << "Enter number of guests: ";
+	cin >> numOfGuest;
+	//pList.add(bookingId, name, phoneNo, email);
+
+
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Booking RoomList;
+	int option = 0;
+	switch (option)
+	{
+		Menu();
+		cin >> option;
+	case 1: AddBooking();
+		break;
+	case 2: ;
+		break;
+	case 3: ;
+		break;
+	case 4: ;
+		break;
+	case 5:;
+		break;
+	case 0:
+		cout << "Bye!\n";
+
+	}
+
+}
+
+void Menu()
+{
+
+	cout << "----------------Main Menu------------------\n";
+	cout << "[1] Add Booking\n";
+	cout << "[2] Check In\n";
+	cout << "[3] Check Out\n";
+	cout << "[4] Display guest on a particular date\n";
+	cout << "[5] Display rooms occupied on a month\n";
+	cout << "[0] Exit\n";
+	cout << "----------------------------------------------\n";
+	cout << "Enter your option : ";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
