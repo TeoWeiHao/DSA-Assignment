@@ -1,6 +1,6 @@
 #include <iostream>
 #pragma once
-#include "Customer.h"
+#include "Guest.h"
 using namespace std;
 
 
