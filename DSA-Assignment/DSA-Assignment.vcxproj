@@ -139,18 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Booking.cpp" />
-    <ClCompile Include="CheckIn.cpp" />
-    <ClCompile Include="DateTime.cpp" />
-    <ClCompile Include="Guest.cpp" />
+    <ClCompile Include="BookingInfo.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Booking.h" />
-    <ClInclude Include="CheckIn.h" />
-    <ClInclude Include="Guest.h" />
+    <ClInclude Include="BookingInfo.h" />
     <ClInclude Include="Room.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Bookings.csv" />
+    <None Include="..\Rooms.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
