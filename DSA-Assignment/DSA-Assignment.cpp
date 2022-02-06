@@ -33,8 +33,7 @@ int main()
 		if (p != NULL)
 			cout << "Booking not found" << endl;
 		else
-			//newBooking.AssignRoomNumber()
-			
+			//newBooking.AssignRoomNumber()			
 		break;
 	case 3: ;
 		break;
