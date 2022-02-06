@@ -69,9 +69,9 @@ public:
 	// display the items in the list
 	void print();
 
-	int checkInSearch(string gn, string rt, int nog);
+	int checkInSearch(string gn, string rt, int nog, string date);
 
-	int checkOutSearch(string gn, string rn, int nog);
+	int checkOutSearch(string gn, string rn, int nog, string date);
 
 	bool isRoomFreeOnDate(string date, string roomNo);
 

@@ -143,23 +143,31 @@ void List::print()
 		cout << "The list is empty." << endl;
 }
 
-int List::checkInSearch(string gn, string rt, int nog) {
+int List::checkInSearch(string gn, string rt, int nog, string date) {
 	Node* current = firstNode;
 	for (int i = 0; i < size;i++)
 	{
-		if(current->item.getGuestName() == gn && current->item.getRoomType() == rt && current->item.getStatus() == "Booked" && current->item.getGuestsNo() == nog)
-			return i;
+		if (current->item.getGuestName() == gn && current->item.getRoomType() == rt && current->item.getStatus() == "Booked" && current->item.getGuestsNo() == nog) {
+			tm dtnow = stringToDate(date);
+			tm dtcheckin = stringToDate(current->item.getCheckIn());
+			if(dtnow.tm_year == dtcheckin.tm_year && dtnow.tm_mon == dtcheckin.tm_mon && dtnow.tm_mday == dtcheckin.tm_mday)
+				return i;
+		}
 		current = current->next;
 	}
 	return -1;
 }
 
-int List::checkOutSearch(string gn, string rn, int nog) {
+int List::checkOutSearch(string gn, string rn, int nog, string date) {
 	Node* current = firstNode;
 	for (int i = 0; i < size;i++)
 	{
-		if (current->item.getGuestName() == gn && current->item.getRoomNo() == rn && current->item.getStatus() == "Checked In" && current->item.getGuestsNo() == nog)
-			return i;
+		if (current->item.getGuestName() == gn && current->item.getRoomNo() == rn && current->item.getStatus() == "Checked In" && current->item.getGuestsNo() == nog) {
+			tm dtnow = stringToDate(date);
+			tm dtcheckout = stringToDate(current->item.getCheckOut());
+			if (dtnow.tm_year == dtcheckout.tm_year && dtnow.tm_mon == dtcheckout.tm_mon && dtnow.tm_mday == dtcheckout.tm_mday)
+				return i;
+		}
 		current = current->next;
 	}
 	return -1;
@@ -170,7 +178,7 @@ tm stringToDate(string date) {
 
 	char aString[10];
 
-	for (int i = 0; i < date.length(); i++) {
+	for (int i = 0; i < 10; i++) {
 		aString[i] = date[i];
 	}
 
@@ -179,19 +187,6 @@ tm stringToDate(string date) {
 	return result;
 }
 
-tm stringToDateTime(string dateTime) {
-	tm result;
-
-	char aString[20];
-
-	for (int i = 0; i < dateTime.length(); i++) {
-		aString[i] = dateTime[i];
-	}
-
-	sscanf_s(aString, "%d/%d/%4d  %d:%d:%d", &result.tm_mday, &result.tm_mon, &result.tm_year, &result.tm_hour, &result.tm_min, &result.tm_sec);
-
-	return result;
-}
 bool List::isRoomFreeOnDate(string date, string roomNo) {
 	Node* current = firstNode;
 	tm tmChosenDate = stringToDate(date);

@@ -89,7 +89,7 @@ int main()
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
 
-			index = bookingsList.checkInSearch(searchGuestName, searchRoomType, noOfGuests);
+			index = bookingsList.checkInSearch(searchGuestName, searchRoomType, noOfGuests, dateTime);
 			checkInDate = bookingsList.get(index).getCheckIn();
 			roomType = bookingsList.get(index).getRoomType();
 
@@ -123,7 +123,7 @@ int main()
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
 			
-			index = bookingsList.checkOutSearch(searchGuestName, searchRoomNo, noOfGuests);
+			index = bookingsList.checkOutSearch(searchGuestName, searchRoomNo, noOfGuests, dateTime);
 			bookingsList.setStatus(index, "Checked Out");
 
 			cout << endl;
@@ -155,6 +155,10 @@ int main()
 			cout << "Year : ";
 			cin >> yearChosen;
 			bookingsList.dateOccupied(monthChosen, yearChosen);
+		}
+		else if (menuOption == 6) {
+			cout << "Date : ";
+			cin >> dateTime;
 		}
         else if (menuOption == 0) {
             cout << "Bye!\n";
