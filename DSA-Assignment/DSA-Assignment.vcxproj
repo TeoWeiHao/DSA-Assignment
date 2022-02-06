@@ -142,10 +142,12 @@
     <ClCompile Include="BookingInfo.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="RoomDictionary.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BookingInfo.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomDictionary.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Bookings.csv" />
