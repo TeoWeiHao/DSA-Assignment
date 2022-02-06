@@ -125,6 +125,7 @@ int main()
 			cin >> searchGuestName;
 			cout << "Enter Room No. : ";
 			cin >> searchRoomNo;
+			searchRoomNo = "Room " + searchRoomNo;
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
 			
