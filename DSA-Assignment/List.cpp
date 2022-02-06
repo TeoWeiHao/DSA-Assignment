@@ -112,7 +112,7 @@ void List::print()
 	{
 		while (temp != NULL)
 		{
-			//cout << temp->item << endl;
+			cout << temp->item.print() << endl;
 			temp = temp->next;
 		}
 	}
