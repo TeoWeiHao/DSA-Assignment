@@ -148,8 +148,8 @@ tm stringToDate(string date) {
 
 	char aString[10];
 
-	for (int i = 0; i < dateTime.length(); i++) {
-		aString[i] = dateTime[i];
+	for (int i = 0; i < date.length(); i++) {
+		aString[i] = date[i];
 	}
 
 	sscanf_s(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
