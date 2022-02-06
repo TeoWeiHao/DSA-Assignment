@@ -14,13 +14,15 @@ void Menu();
 void readRoomsFile();
 void readBookingsFile();
 
-List list;
+List bookingsList;
 RoomDictionary roomDict = RoomDictionary();
 
 int main()
 {
 	readBookingsFile();
 	readRoomsFile();
+
+	string dateTime = "";
 
 	int menuOption;
 	while (true) {
@@ -29,7 +31,7 @@ int main()
 
         if (menuOption == 1) {
 			string newGuestName, newRoomType, checkInDate, checkOutDate, specialRequests;
-			int bookingslistsize = 100, noOfGuests;
+			int noOfGuests;
 
 			cout << endl;
 			cout << "Enter Guest Name : ";
@@ -45,15 +47,15 @@ int main()
 			cout << "Enter Special Requests : ";
 			cin >> specialRequests;
 
-			BookingInfo newBooking = BookingInfo(bookingslistsize+1, "", newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
-			// BookingInfo(int id, std::string bdate, std::string gn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp)
-			//bst.insert(101);
+			BookingInfo newBooking = BookingInfo(bookingsList.getLength()+1, "", newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
+			bookingsList.add(newBooking);
         }
         else if (menuOption == 2) {
-				
+			// setStatus
+			// assignRoom
         }
         else if (menuOption == 3) {
-            
+			// setStatus
         }
         else if (menuOption == 4) {
             
@@ -91,7 +93,6 @@ void readRoomsFile() {
 	fstream fin;
 	fin.open("Rooms.csv", ios::in);
 	getline(fin, line);
-	cout << line << endl;
 	while ( getline(fin, line) ) {
 		row.clear();
 
@@ -120,7 +121,6 @@ void readBookingsFile() {
 	fstream fin;
 	fin.open("Bookings.csv", ios::in);
 	getline(fin, line);
-	cout << line << endl;
 	while (getline(fin, line)) {
 		row.clear();
 
@@ -137,10 +137,9 @@ void readBookingsFile() {
 		row.push_back(s);
 
 		BookingInfo newBooking = BookingInfo(stoi(row[0]), row[1], row[2], row[3], row[4], row[5], row[6], row[7], stoi(row[8]), row[9]);
-		list.add(newBooking);
+		bookingsList.add(newBooking);
 
 	}
-	list.print();
 	fin.close();
 }
 

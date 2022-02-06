@@ -34,6 +34,10 @@ void BookingInfo::AssignRoomNumber(std::string rn) {
 	roomNo = rn;
 }
 
+void BookingInfo::setStatus(std::string s) {
+	status = s;
+}
+
 int BookingInfo::getBookingID() {
 	return bookingID;
 }
@@ -72,4 +76,8 @@ int BookingInfo::getGuestsNo() {
 
 std::string BookingInfo::getSpecialRequests() {
 	return specialRequests;
+}
+
+std::string BookingInfo::print() {
+	return std::to_string(bookingID) + " " + bookingDate + " " + guestName + " " + roomNo + " " + roomType + " " + status + " " + checkIn + " " + checkOut + " " + std::to_string(guestsNo) + " " + specialRequests;
 }
