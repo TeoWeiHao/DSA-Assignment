@@ -1,9 +1,12 @@
 // DSA-Assignment.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
 #include <iostream>
 #include "BookingInfo.h"
 #include "BST.h"
+#include <vector>
+#include <fstream>
+#include <string>
+#include <sstream>
 using namespace std;
 
 void Menu();
@@ -24,6 +27,7 @@ int main()
 			cout << "Enter Guest Name : ";
 			cin >> newGuestName;
 			BookingInfo newBooking = BookingInfo(101, "", "", "", "", "", "", 1, "");
+			bst.insert(101);
         }
         else if (menuOption == 2) {
 			cout << "Enter a booking ID to search : ";
