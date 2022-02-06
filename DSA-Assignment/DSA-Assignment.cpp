@@ -12,16 +12,16 @@ using namespace std;
 
 void Menu();
 void readRoomsFile();
+void readBookingsFile();
 
 int main()
 {
-	int menuOption;
 	BST bst;
-	ItemType target;
-
+	readBookingsFile(bst);
 	RoomDictionary roomDict = RoomDictionary();
 	readRoomsFile(roomDict);
 
+	int menuOption;
 	while (true) {
         Menu();
         cin >> menuOption;
@@ -35,6 +35,7 @@ int main()
 			bst.insert(101);
         }
         else if (menuOption == 2) {
+			ItemType target;
 			cout << "Enter a booking ID to search : ";
 			cin >> target;
 			BinaryNode* p = bst.search(target);
@@ -101,6 +102,34 @@ void readRoomsFile(RoomDictionary roomDict) {
 
 		Room newRoom = Room(row[0], row[1], stoi(row[2]));
 		roomDict.add(row[1], newRoom);
+	}
+	fin.close();
+}
+
+void readBookingsFile(BST bst) {
+	string line;
+	vector<string> row;
+
+	fstream fin;
+	fin.open("Bookings.csv", ios::in);
+	getline(fin, line);
+	cout << line << endl;
+	while (getline(fin, line)) {
+		row.clear();
+
+		string s = line;
+		string delimiter = ",";
+
+		size_t pos = 0;
+		string token;
+		while ((pos = s.find(delimiter)) != string::npos) {
+			token = s.substr(0, pos);
+			row.push_back(token);
+			s.erase(0, pos + delimiter.length());
+		}
+		row.push_back(s);
+
+		BookingInfo newBooking = BookingInfo(stoi(row[0]), row[1], row[2], row[3], row[4], row[5], row[6], row[7], stoi(row[8]), row[9]);
 	}
 	fin.close();
 }
