@@ -35,8 +35,16 @@ int main()
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> newGuestName;
-			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
+			cout << "Enter Room Type ( [SCV] Standard City View | [DCV] Deluxe City View | [ESV] Executive Sea View | [PS] President Suite) : ";
 			cin >> newRoomType;
+			if (newRoomType == "SCV")
+				newRoomType = "Standard City View";
+			if (newRoomType == "DCV")
+				newRoomType = "Deluxe City View";
+			if (newRoomType == "ESV")
+				newRoomType = "Executive Sea View";
+			if (newRoomType == "PS")
+				newRoomType = "President Suite";
 			cout << "Enter Check In Date : ";
 			cin >> checkInDate;
 			cout << "Enter Check Out Date : ";
@@ -55,8 +63,16 @@ int main()
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> searchGuestName;
-			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
+			cout << "Enter Room Type ( [SCV] Standard City View | [DCV] Deluxe City View | [ESV] Executive Sea View | [PS] President Suite) : ";
 			cin >> searchRoomType;
+			if (searchRoomType == "SCV")
+				searchRoomType = "Standard City View";
+			if (searchRoomType == "DCV")
+				searchRoomType = "Deluxe City View";
+			if (searchRoomType == "ESV")
+				searchRoomType = "Executive Sea View";
+			if (searchRoomType == "PS")
+				searchRoomType = "President Suite";
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
 
