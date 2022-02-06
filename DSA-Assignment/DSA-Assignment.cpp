@@ -4,7 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include "BookingInfo.h"
-#include "BST.h"
+#include "List.h"
 #include <vector>
 #include "Room.h"
 #include "RoomDictionary.h"
@@ -16,8 +16,8 @@ void readBookingsFile();
 
 int main()
 {
-	BST bst;
-	readBookingsFile(bst);
+	List list;
+	readBookingsFile(list);
 	RoomDictionary roomDict = RoomDictionary();
 	readRoomsFile(roomDict);
 
@@ -32,18 +32,9 @@ int main()
 			cout << "Enter Guest Name : ";
 			cin >> newGuestName;
 			BookingInfo newBooking = BookingInfo(101, "", "", "", "", "", "", 1, "");
-			bst.insert(101);
         }
         else if (menuOption == 2) {
-			ItemType target;
-			cout << "Enter a booking ID to search : ";
-			cin >> target;
-			BinaryNode* p = bst.search(target);
-			if (p != NULL)
-				cout << "Booking not found" << endl;
-			else
-				//newBooking.AssignRoomNumber()
-				cout << "";
+				
         }
         else if (menuOption == 3) {
             
@@ -106,7 +97,7 @@ void readRoomsFile(RoomDictionary roomDict) {
 	fin.close();
 }
 
-void readBookingsFile(BST bst) {
+void readBookingsFile(List list) {
 	string line;
 	vector<string> row;
 
