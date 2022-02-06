@@ -1,11 +1,14 @@
 #include "BookingInfo.h"
 #include <string>
 
+BookingInfo::BookingInfo() {
+
+}
+
 BookingInfo::BookingInfo(int id, std::string bdate, std::string gn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp) {
 	bookingID = id;
 	bookingDate = bdate;
 	guestName = gn;
-	roomNo = rn;
 	roomType = rt;
 	status = s;
 	checkIn = ci;
