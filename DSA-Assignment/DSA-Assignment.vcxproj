@@ -140,11 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BookingInfo.cpp" />
+    <ClCompile Include="BST.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
     <ClCompile Include="Room.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinaryNode.h" />
     <ClInclude Include="BookingInfo.h" />
+    <ClInclude Include="BST.h" />
     <ClInclude Include="Room.h" />
   </ItemGroup>
   <ItemGroup>
