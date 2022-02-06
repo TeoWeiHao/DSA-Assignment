@@ -140,7 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BookingInfo.cpp" />
-    <ClCompile Include="BST.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="DSA-Assignment.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomDictionary.cpp" />
@@ -148,7 +148,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryNode.h" />
     <ClInclude Include="BookingInfo.h" />
-    <ClInclude Include="BST.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="RoomNode.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomDictionary.h" />
