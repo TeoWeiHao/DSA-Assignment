@@ -90,27 +90,32 @@ int main()
 			cin >> noOfGuests;
 
 			index = bookingsList.checkInSearch(searchGuestName, searchRoomType, noOfGuests, dateTime);
-			checkInDate = bookingsList.get(index).getCheckIn();
-			roomType = bookingsList.get(index).getRoomType();
+			if (index != -1) {
+				checkInDate = bookingsList.get(index).getCheckIn();
+				roomType = bookingsList.get(index).getRoomType();
 
-			roomNo = roomDict.getAvaliableRoom(roomType, checkInDate, bookingsList);
+				roomNo = roomDict.getAvaliableRoom(roomType, checkInDate, bookingsList);
 
-			bookingsList.AssignRoomNumber(index, roomNo);
-			bookingsList.setStatus(index, "Checked In");
+				bookingsList.AssignRoomNumber(index, roomNo);
+				bookingsList.setStatus(index, "Checked In");
 
-			cout << endl;
-			cout << "Check in is successful" << endl;
-			cout << "Booking ID:" << bookingsList.get(index).getBookingID() << endl;
-			cout << "Booking Date:" << bookingsList.get(index).getBookingDate() << endl;
-			cout << "Guest Name:" << bookingsList.get(index).getGuestName() << endl;
-			cout << "Room No.:" << bookingsList.get(index).getRoomNo() << endl;
-			cout << "Room Type:" << bookingsList.get(index).getRoomType() << endl;
-			cout << "Status:" << bookingsList.get(index).getStatus() << endl;
-			cout << "Check In Date:" << bookingsList.get(index).getCheckIn() << endl;
-			cout << "Check Out Date:" << bookingsList.get(index).getCheckOut() << endl;
-			cout << "No. of Guests:" << bookingsList.get(index).getGuestsNo() << endl;
-			cout << "Special Requests:" << bookingsList.get(index).getSpecialRequests() << endl;
-			cout << endl;
+				cout << endl;
+				cout << "Check in is successful" << endl;
+				cout << "Booking ID:" << bookingsList.get(index).getBookingID() << endl;
+				cout << "Booking Date:" << bookingsList.get(index).getBookingDate() << endl;
+				cout << "Guest Name:" << bookingsList.get(index).getGuestName() << endl;
+				cout << "Room No.:" << bookingsList.get(index).getRoomNo() << endl;
+				cout << "Room Type:" << bookingsList.get(index).getRoomType() << endl;
+				cout << "Status:" << bookingsList.get(index).getStatus() << endl;
+				cout << "Check In Date:" << bookingsList.get(index).getCheckIn() << endl;
+				cout << "Check Out Date:" << bookingsList.get(index).getCheckOut() << endl;
+				cout << "No. of Guests:" << bookingsList.get(index).getGuestsNo() << endl;
+				cout << "Special Requests:" << bookingsList.get(index).getSpecialRequests() << endl;
+				cout << endl;
+			}
+			else {
+				cout << "Check in is unsuccessful" << endl;
+			}
         }
         else if (menuOption == 3) {
 			string searchGuestName, searchRoomNo;
@@ -124,21 +129,26 @@ int main()
 			cin >> noOfGuests;
 			
 			index = bookingsList.checkOutSearch(searchGuestName, searchRoomNo, noOfGuests, dateTime);
-			bookingsList.setStatus(index, "Checked Out");
+			if (index != -1) {
+				bookingsList.setStatus(index, "Checked Out");
 
-			cout << endl;
-			cout << "Check out is successful" << endl;
-			cout << "Booking ID:" << bookingsList.get(index).getBookingID() << endl;
-			cout << "Booking Date:" << bookingsList.get(index).getBookingDate() << endl;
-			cout << "Guest Name:" << bookingsList.get(index).getGuestName() << endl;
-			cout << "Room No.:" << bookingsList.get(index).getRoomNo() << endl;
-			cout << "Room Type:" << bookingsList.get(index).getRoomType() << endl;
-			cout << "Status:" << bookingsList.get(index).getStatus() << endl;
-			cout << "Check In Date:" << bookingsList.get(index).getCheckIn() << endl;
-			cout << "Check Out Date:" << bookingsList.get(index).getCheckOut() << endl;
-			cout << "No. of Guests:" << bookingsList.get(index).getGuestsNo() << endl;
-			cout << "Special Requests:" << bookingsList.get(index).getSpecialRequests() << endl;
-			cout << endl;
+				cout << endl;
+				cout << "Check out is successful" << endl;
+				cout << "Booking ID:" << bookingsList.get(index).getBookingID() << endl;
+				cout << "Booking Date:" << bookingsList.get(index).getBookingDate() << endl;
+				cout << "Guest Name:" << bookingsList.get(index).getGuestName() << endl;
+				cout << "Room No.:" << bookingsList.get(index).getRoomNo() << endl;
+				cout << "Room Type:" << bookingsList.get(index).getRoomType() << endl;
+				cout << "Status:" << bookingsList.get(index).getStatus() << endl;
+				cout << "Check In Date:" << bookingsList.get(index).getCheckIn() << endl;
+				cout << "Check Out Date:" << bookingsList.get(index).getCheckOut() << endl;
+				cout << "No. of Guests:" << bookingsList.get(index).getGuestsNo() << endl;
+				cout << "Special Requests:" << bookingsList.get(index).getSpecialRequests() << endl;
+				cout << endl;
+			}
+			else {
+				cout << "Check out is unsuccessful" << endl;
+			}
         }
         else if (menuOption == 4) {
 			string dateChosen;
