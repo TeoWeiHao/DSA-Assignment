@@ -16,6 +16,9 @@ private:
 	std::string specialRequests;
 
 public:
+	BookingInfo(int id, std::string bdate, std::string gn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp);
+
+
 	BookingInfo(int id, std::string bdate, std::string gn, std::string rn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp);
 
 	void AssignRoomNumber(std::string rn);
