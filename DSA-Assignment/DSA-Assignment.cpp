@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "BookingInfo.h"
+#include "BST.h"
 using namespace std;
 
 void Menu();
@@ -11,6 +12,9 @@ int main()
 {
 	int option = 0;
 	BookingInfo newBooking;
+	BST bst;
+	ItemType target;
+
 	switch (option)
 	{
 		Menu();
@@ -19,6 +23,14 @@ int main()
 		newBooking = BookingInfo(101, "", "", "", "", "", "", 1,"");
 		break;
 	case 2: ;
+		cout << "Enter a booking ID to search : ";
+		cin >> target;
+		BinaryNode* p = bst.search(target);
+		if (p != NULL)
+			cout << "Booking not found" << endl;
+		else
+			//newBooking.AssignRoomNumber()
+			
 		break;
 	case 3: ;
 		break;
