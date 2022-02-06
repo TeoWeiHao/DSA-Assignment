@@ -4,8 +4,18 @@ using namespace std;
 #include "List.h"
 #include "time.h"
 
-tm stringToDate() {
+tm stringToDate(string date) {
+	tm result;
 
+	char aString[10];
+
+	for (int i = 0; i < 10; i++) {
+		aString[i] = date[i];
+	}
+
+	sscanf_s(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
+
+	return result;
 }
 
 List::List()
@@ -174,20 +184,6 @@ int List::checkOutSearch(string gn, string rn, int nog, string date) {
 		current = current->next;
 	}
 	return -1;
-}
-
-tm stringToDate(string date) {
-	tm result;
-
-	char aString[10];
-
-	for (int i = 0; i < 10; i++) {
-		aString[i] = date[i];
-	}
-
-	sscanf_s(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
-
-	return result;
 }
 
 bool List::isRoomFreeOnDate(string date, string roomNo) {
