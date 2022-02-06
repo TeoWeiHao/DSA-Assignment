@@ -1,5 +1,6 @@
 #include "RoomDictionary.h"
 #include "RoomNode.h"
+#include <iostream>
 
 RoomDictionary::RoomDictionary() {
 	for (int i = 0; i < MAX_SIZE; i++)
@@ -35,21 +36,21 @@ int charvalue(char c)
 		return -1;
 }
 
-int RoomDictionary::hash(KeyType key) {
+int RoomDictionary::hash(std::string key) {
 	int total = charvalue(key[0]);
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 1; i < 3; i++) {
 		if (charvalue(key[i]) == -1) {
 			continue;
 		}
 
-		total = total * 52 + charvalue(key[i]);
+		total = total + charvalue(key[i]);
 		total = total %= MAX_SIZE;
 	}
 	return total;
 }
 
-void RoomDictionary::add(KeyType newKey, ItemType newRoom) {
+void RoomDictionary::add(std::string newKey, Room newRoom) {
 	int index = hash(newKey);
 
 	if (items[index] == NULL)
@@ -79,4 +80,16 @@ void RoomDictionary::add(KeyType newKey, ItemType newRoom) {
 
 int RoomDictionary::getLength() {
 	return size;
+}
+
+void RoomDictionary::printDictionary() {
+	for (int i = 0; i <= 3; i++) {
+		std::cout << i << std::endl;
+		RoomNode* current = items[i];
+		while (current != NULL)
+		{
+			std::cout << current->item.getRoomNo() << std::endl;
+			current = current->next;
+		}
+	}
 }

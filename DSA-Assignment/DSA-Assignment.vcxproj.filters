@@ -51,12 +51,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Bookings.csv">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\Rooms.csv">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>
