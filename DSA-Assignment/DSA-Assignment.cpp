@@ -27,11 +27,25 @@ int main()
         cin >> menuOption;
 
         if (menuOption == 1) {
-			string newGuestName;
+			string newGuestName, newRoomType, checkInDate, checkOutDate, specialRequests;
+			int bookingslistsize = 100, noOfGuests;
+
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> newGuestName;
-			BookingInfo newBooking = BookingInfo(101, "", "", "", "", "", "", 1, "");
+			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
+			cin >> newRoomType;
+			cout << "Enter Check In Date : ";
+			cin >> checkInDate;
+			cout << "Enter Check Out Date : ";
+			cin >> checkOutDate;
+			cout << "Enter Number of Guests : ";
+			cin >> noOfGuests;
+			cout << "Enter Special Requests : ";
+			cin >> specialRequests;
+
+			BookingInfo newBooking = BookingInfo(bookingslistsize+1, "", newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
+			// BookingInfo(int id, std::string bdate, std::string gn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp)
 			bst.insert(101);
         }
         else if (menuOption == 2) {
