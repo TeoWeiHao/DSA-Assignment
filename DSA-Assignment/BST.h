@@ -43,8 +43,6 @@ public:
 	// check if the binary search tree is empty
 	bool isEmpty();
 
-	// ---------------- to be implemented -------------------
-
 	// count the number of nodes in the binary search tree
 	int countNodes();
 	int countNodes(BinaryNode* t);
