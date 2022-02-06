@@ -38,7 +38,7 @@ int charvalue(char c)
 int RoomDictionary::hash(KeyType key) {
 	int total = charvalue(key[0]);
 
-	for (int i = 1; i < key.size(); i++) {
+	for (int i = 0; i < 3; i++) {
 		if (charvalue(key[i]) == -1) {
 			continue;
 		}

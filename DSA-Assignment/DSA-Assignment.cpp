@@ -10,42 +10,47 @@ void Menu();
 
 int main()
 {
-	int option = 1;
-	BookingInfo newBooking;
+	int menuOption;
 	BST bst;
 	ItemType target;
-	string newGuestName;
 
-	switch (option)
-	{
-		Menu();
-		cin >> option;
-	case 1:
-		cout << endl;
-		cout << "Enter Guest Name : ";
-		cin >> newGuestName;
-		newBooking = BookingInfo(101, "", "", "", "", "", "", 1,"");
-		break;
-	case 2: ;
-		cout << "Enter a booking ID to search : ";
-		cin >> target;
-		BinaryNode* p = bst.search(target);
-		if (p != NULL)
-			cout << "Booking not found" << endl;
-		else
-			//newBooking.AssignRoomNumber()			
-		break;
-	case 3: ;
-		break;
-	case 4: ;
-		break;
-	case 5: ;
-		break;
-	case 0:
-		cout << "Bye!\n";
+	while (true) {
+        Menu();
+        cin >> menuOption;
 
-	}
+        if (menuOption == 1) {
+			string newGuestName;
+			cout << endl;
+			cout << "Enter Guest Name : ";
+			cin >> newGuestName;
+			BookingInfo newBooking = BookingInfo(101, "", "", "", "", "", "", 1, "");
+        }
+        else if (menuOption == 2) {
+			cout << "Enter a booking ID to search : ";
+			cin >> target;
+			BinaryNode* p = bst.search(target);
+			if (p != NULL)
+				cout << "Booking not found" << endl;
+			else
+				//newBooking.AssignRoomNumber()
+				cout << "";
+        }
+        else if (menuOption == 3) {
+            
+        }
+        else if (menuOption == 4) {
+            
+        }
+		else if (menuOption == 5) {
 
+		}
+        else if (menuOption == 0) {
+            cout << "Bye!\n";
+        }
+        else {
+            cout << "Invalid input, please try again!" << endl;
+        }
+    }
 }
 
 void Menu()
