@@ -98,7 +98,7 @@ ItemType List::get(int index)
 
 bool List::isEmpty()
 {
-	return size = 0;
+	return size == 0;
 }
 
 int List::getLength()
