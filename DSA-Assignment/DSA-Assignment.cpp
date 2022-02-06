@@ -13,15 +13,14 @@ using namespace std;
 void Menu();
 void readRoomsFile();
 
-RoomDictionary roomDict = RoomDictionary();
-
 int main()
 {
 	int menuOption;
 	BST bst;
 	ItemType target;
 
-	readRoomsFile();
+	RoomDictionary roomDict = RoomDictionary();
+	readRoomsFile(roomDict);
 
 	while (true) {
         Menu();
@@ -77,7 +76,7 @@ void Menu()
 	cout << "Enter your option : ";
 }
 
-void readRoomsFile() {
+void readRoomsFile(RoomDictionary roomDict) {
 	string line;
 	vector<string> row;
 
