@@ -1,81 +1,121 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #include "List.h"
 
-// constructor
-List::List() { size = 0; }
 
-// add an item to the back of the list (append)
-bool List::add(BookingInfo item)
+List::List()
 {
-	bool success = size < MAX_SIZE;
+	firstNode = NULL;
+	size = 0;
+}
+
+bool List::add(ItemType item)
+{
+	Node* newNode = new Node;
+	newNode->item = item;
+	newNode->next = NULL;
+
+	if (isEmpty())
+		firstNode = newNode;
+	else {
+		Node* temp = firstNode;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = newNode;
+	}
+	size++;
+	return true;
+}
+
+bool List::add(int index, ItemType item)
+{
+	bool success = (index >= 0) && (index < size);
 	if (success)
 	{
-		items[size] = item;    // add to the end of the list
-		size++;                // increase the size by 1
+		Node* newNode = new Node;
+		newNode->item = item;
+		newNode->next = NULL;
+
+		if (index == 0)
+		{
+			newNode->next = firstNode;
+			firstNode = newNode;
+		}
+		else {
+			Node* temp = firstNode;
+			for (int i = 0; i < index - 1;i++)
+				temp = temp->next;
+			newNode->next = temp->next;
+			temp->next = newNode;
+		}
+		size++;
 	}
 	return success;
 }
 
-// add an item at a specified position in the list (insert)
-bool List::add(int index, BookingInfo item)
-{
-	bool success = (index >= 0) && (index <= size) && (size < MAX_SIZE);
-	if (success)
-	{  // make room for the item by shifting all items at
-	   // positions >= index toward the end of the
-	   // List (no shift if index == size + 1)
-		for (int pos = size; pos >= index; pos--)
-			items[pos] = items[pos - 1];
-		// insert the item
-		items[index] = item;
-		size++;  // increase the size by 1
-	}
-	return success;
-}
-
-// remove an item at a specified position in the list
 void List::remove(int index)
 {
 	bool success = (index >= 0) && (index < size);
 	if (success)
-	{  // delete item by shifting all items at positions >
-	   // index toward the beginning of the list
-	   // (no shift if index == size)
-		for (int pos = index; pos < size; pos++)
-			items[pos] = items[pos + 1];
-		size--;  // decrease the size by 1
+	{
+		if (index == 0)
+		{
+			Node* temp = firstNode;
+			firstNode = firstNode->next;
+			temp->next = NULL;
+			delete temp;
+		}
+		else {
+			Node* current = firstNode;
+			Node* previous = firstNode;
+			for (int i = 0; i < index - 1;i++)
+			{
+				previous = current;
+				current = current->next;
+			}
+			previous->next = current->next;
+			current->next = NULL;
+			delete current;
+		}
+		size--;
 	}
-
 }
 
-// get an item at a specified position of the list (retrieve)
-BookingInfo List::get(int index)
+ItemType List::get(int index)
 {
-	return items[index];
+
+	Node* current = firstNode;
+	for (int i = 0; i < index;i++)
+	{
+		current = current->next;
+	}
+	return current->item;
 }
 
-// check if the list is empty
-bool List::isEmpty() { return size == 0; }
 
-// check the size of the list
-int List::getLength() { return size; }
 
-// display the items in the list
+bool List::isEmpty()
+{
+	return size = 0;
+}
+
+int List::getLength()
+{
+	return size;
+}
+
 void List::print()
 {
-	for (int b = 0; b < size; b++)
-		cout << items[b].getBookingDate() << " " << items[b].getBookingID() << " " << items[b].getGuestName() << "\n"
-		<< " " << items[b].getGuestsNo() << " " << items[b].getCheckIn() << " " << items[b].getCheckOut() << "\n"
-		<< " " << items[b].getStatus() << " " << items[b].getRoomNo() << " " << items[b].getRoomType() << " " << items[b].getSpecialRequests() << endl;
+	Node* temp = firstNode;
+	if (isEmpty())
+	{
+		while (temp != NULL)
+		{
+			//cout << temp->item << endl;
+			temp = temp->next;
+		}
+	}
+	else
+		cout << "The list is empty." << endl;
 }
-
-// replace the  item in the specified index in the list
-void List::replace(int index, BookingInfo item)
-{
-	bool success = (index >= 0) && (index < size);
-	if (success)
-		items[index] = item;
-}
-
