@@ -153,10 +153,6 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomDictionary.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Bookings.csv" />
-    <None Include="..\Rooms.csv" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

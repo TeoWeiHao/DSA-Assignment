@@ -17,10 +17,12 @@ public:
 
 	~RoomDictionary();
 
-	int hash(KeyType key);
+	int hash(std::string key);
 
-	void add(KeyType newKey, ItemType newRoom);
+	void add(std::string newKey, Room newRoom);
 
 	int getLength();
+
+	void printDictionary();
 
 };

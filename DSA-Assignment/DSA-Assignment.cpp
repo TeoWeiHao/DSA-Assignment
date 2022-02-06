@@ -1,21 +1,27 @@
 // DSA-Assignment.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include "BookingInfo.h"
 #include "BST.h"
 #include <vector>
-#include <fstream>
-#include <string>
-#include <sstream>
+#include "Room.h"
+#include "RoomDictionary.h"
 using namespace std;
 
 void Menu();
+void readRoomsFile();
+
+RoomDictionary roomDict = RoomDictionary();
 
 int main()
 {
 	int menuOption;
 	BST bst;
 	ItemType target;
+
+	readRoomsFile();
 
 	while (true) {
         Menu();
@@ -69,6 +75,35 @@ void Menu()
 	cout << "[0] Exit\n";
 	cout << "----------------------------------------------\n";
 	cout << "Enter your option : ";
+}
+
+void readRoomsFile() {
+	string line;
+	vector<string> row;
+
+	fstream fin;
+	fin.open("Rooms.csv", ios::in);
+	getline(fin, line);
+	cout << line << endl;
+	while ( getline(fin, line) ) {
+		row.clear();
+
+		string s = line;
+		string delimiter = ",";
+
+		size_t pos = 0;
+		string token;
+		while ((pos = s.find(delimiter)) != string::npos) {
+			token = s.substr(0, pos);
+			row.push_back(token);
+			s.erase(0, pos + delimiter.length());
+		}
+		row.push_back(s);
+
+		Room newRoom = Room(row[0], row[1], stoi(row[2]));
+		roomDict.add(row[1], newRoom);
+	}
+	fin.close();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
