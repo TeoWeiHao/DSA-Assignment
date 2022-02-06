@@ -2,6 +2,7 @@
 #include "Room.h"
 #include <string>
 #include "RoomNode.h"
+#include "List.h"
 
 const int HASH_TABLE_SIZE = 4;
 
@@ -24,5 +25,7 @@ public:
 	int getLength();
 
 	void printDictionary();
+
+	std::string getAvaliableRoom(std::string roomType, std::string date, List blist);
 
 };

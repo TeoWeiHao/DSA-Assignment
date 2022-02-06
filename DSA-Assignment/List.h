@@ -65,6 +65,16 @@ public:
 	// display the items in the list
 	void print();
 
+	int checkInSearch(string gn, string rt, int nog);
+
+	int checkOutSearch(string gn, string rn, int nog);
+
+	bool isRoomFreeOnDate(string date, string roomNo);
+
+	void guestsOnDate(string date);
+
+	void dateOccupied(int month, int year);
+
 	// void replace(int index, ItemType item);
 	// int search(ItemType item);
 };

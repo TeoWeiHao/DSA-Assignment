@@ -8,7 +8,6 @@
 #include "List.h"
 #include "Room.h"
 #include "RoomDictionary.h"
-#include <time.h>
 using namespace std;
 
 void Menu();
@@ -47,12 +46,12 @@ int main()
 			cout << "Enter Special Requests : ";
 			cin >> specialRequests;
 
-			BookingInfo newBooking = BookingInfo(bookingsList.getLength()+1, "", newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
+			BookingInfo newBooking = BookingInfo(bookingsList.getLength()+1, dateTime, newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
 			bookingsList.add(newBooking);
         }
         else if (menuOption == 2) {
-			string searchGuestName, searchRoomType;
-			int noOfGuests;
+			string searchGuestName, searchRoomType, checkInDate, roomType, roomNo;
+			int noOfGuests, index, hash;
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> searchGuestName;
@@ -61,26 +60,44 @@ int main()
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
 
-			// setStatus
-			// assignRoom
+			index = bookingsList.checkInSearch(searchGuestName, searchRoomType, noOfGuests);
+			checkInDate = bookingsList.get(index).getCheckIn();
+			roomType = bookingsList.get(index).getRoomType();
+
+			roomNo = roomDict.getAvaliableRoom(roomType, checkInDate, bookingsList);
+
+			bookingsList.get(index).AssignRoomNumber(roomNo);
+			bookingsList.get(index).setStatus("Checked In");
         }
         else if (menuOption == 3) {
-			string searchGuestName, searchRoomType;
-			int noOfGuests;
+			string searchGuestName, searchRoomNo;
+			int noOfGuests, index;
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> searchGuestName;
-			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
-			cin >> searchRoomType;
+			cout << "Enter Room No. : ";
+			cin >> searchRoomNo;
 			cout << "Enter Number of Guests : ";
 			cin >> noOfGuests;
-			// setStatus
+			
+			index = bookingsList.checkOutSearch(searchGuestName, searchRoomNo, noOfGuests);
+			bookingsList.get(index).setStatus("Checked Out");
         }
         else if (menuOption == 4) {
-            
+			string dateChosen;
+			cout << endl;
+			cout << "Date : ";
+			cin >> dateChosen;
+			bookingsList.guestsOnDate(dateChosen);
         }
 		else if (menuOption == 5) {
-
+			int monthChosen, yearChosen;
+			cout << endl;
+			cout << "Month : ";
+			cin >> monthChosen;
+			cout << "Year : ";
+			cin >> yearChosen;
+			bookingsList.dateOccupied(monthChosen, yearChosen);
 		}
         else if (menuOption == 0) {
             cout << "Bye!\n";
@@ -160,28 +177,6 @@ void readBookingsFile() {
 
 	}
 	fin.close();
-}
-
-tm stringToDate(string date) {
-	tm result;
-
-	char aString[10];
-	strcpy(aString, date.c_str());
-
-	sscanf(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
-
-	return result;
-}
-
-tm stringToDateTime(string dateTime) {
-	tm result;
-
-	char aString[20];
-	strcpy(aString, dateTime.c_str());
-
-	sscanf(aString, "%d/%d/%4d  %d:%d:%d", &result.tm_mday, &result.tm_mon, &result.tm_year, &result.tm_hour, &result.tm_min, &result.tm_sec);
-
-	return result;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

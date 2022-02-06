@@ -93,3 +93,14 @@ void RoomDictionary::printDictionary() {
 		}
 	}
 }
+
+std::string RoomDictionary::getAvaliableRoom(std::string roomType, std::string date, List blist) {
+	int h = hash(roomType);
+	RoomNode* current = items[h];
+	while (current != NULL) {
+		if (blist.isRoomFreeOnDate(date, current->item.getRoomNo())) {
+			return current->item.getRoomNo();
+		}
+		current = current->next;
+	}
+}
