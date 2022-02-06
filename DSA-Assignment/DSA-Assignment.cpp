@@ -14,12 +14,13 @@ void Menu();
 void readRoomsFile();
 void readBookingsFile();
 
+List list;
+RoomDictionary roomDict = RoomDictionary();
+
 int main()
 {
-	List list;
-	readBookingsFile(list);
-	RoomDictionary roomDict = RoomDictionary();
-	readRoomsFile(roomDict);
+	readBookingsFile();
+	readRoomsFile();
 
 	int menuOption;
 	while (true) {
@@ -46,7 +47,7 @@ int main()
 
 			BookingInfo newBooking = BookingInfo(bookingslistsize+1, "", newGuestName, newRoomType, "Booked", checkInDate, checkOutDate, noOfGuests, specialRequests);
 			// BookingInfo(int id, std::string bdate, std::string gn, std::string rt, std::string s, std::string ci, std::string co, int g, std::string sp)
-			bst.insert(101);
+			//bst.insert(101);
         }
         else if (menuOption == 2) {
 				
@@ -83,7 +84,7 @@ void Menu()
 	cout << "Enter your option : ";
 }
 
-void readRoomsFile(RoomDictionary roomDict) {
+void readRoomsFile() {
 	string line;
 	vector<string> row;
 
@@ -112,7 +113,7 @@ void readRoomsFile(RoomDictionary roomDict) {
 	fin.close();
 }
 
-void readBookingsFile(List list) {
+void readBookingsFile() {
 	string line;
 	vector<string> row;
 
@@ -136,7 +137,10 @@ void readBookingsFile(List list) {
 		row.push_back(s);
 
 		BookingInfo newBooking = BookingInfo(stoi(row[0]), row[1], row[2], row[3], row[4], row[5], row[6], row[7], stoi(row[8]), row[9]);
+		list.add(newBooking);
+
 	}
+	list.print();
 	fin.close();
 }
 

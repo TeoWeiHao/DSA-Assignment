@@ -3,13 +3,13 @@
 #include <iostream>
 
 RoomDictionary::RoomDictionary() {
-	for (int i = 0; i < MAX_SIZE; i++)
+	for (int i = 0; i < HASH_TABLE_SIZE; i++)
 		items[i] = NULL;
 	size = 0;
 }
 
 RoomDictionary::~RoomDictionary() {
-	for (int i = 0; i < MAX_SIZE; i++) {
+	for (int i = 0; i < HASH_TABLE_SIZE; i++) {
 		if (items[i] != NULL) {
 			RoomNode* current = items[i];
 			RoomNode* previous = current;
@@ -45,7 +45,7 @@ int RoomDictionary::hash(std::string key) {
 		}
 
 		total = total + charvalue(key[i]);
-		total = total %= MAX_SIZE;
+		total = total %= HASH_TABLE_SIZE;
 	}
 	return total;
 }

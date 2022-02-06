@@ -3,13 +3,13 @@
 #include <string>
 #include "RoomNode.h"
 
-const int MAX_SIZE = 4;
+const int HASH_TABLE_SIZE = 4;
 
 class RoomDictionary
 {
 private:
 
-	RoomNode* items[MAX_SIZE];
+	RoomNode* items[HASH_TABLE_SIZE];
 	int size;
 
 public:
