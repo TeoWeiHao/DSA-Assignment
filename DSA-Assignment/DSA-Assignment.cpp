@@ -2,6 +2,7 @@
 //
 
 #include <iostream>
+#include "BookingInfo.h"
 using namespace std;
 
 void Menu();
@@ -9,11 +10,13 @@ void Menu();
 int main()
 {
 	int option = 0;
+	BookingInfo newBooking;
 	switch (option)
 	{
 		Menu();
 		cin >> option;
-	case 1: ;
+	case 1:
+		newBooking = BookingInfo(101, "", "", "", "", "", "", 1,"");
 		break;
 	case 2: ;
 		break;
