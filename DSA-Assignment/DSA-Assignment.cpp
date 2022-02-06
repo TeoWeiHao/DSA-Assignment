@@ -3,11 +3,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 #include "BookingInfo.h"
 #include "List.h"
-#include <vector>
 #include "Room.h"
 #include "RoomDictionary.h"
+#include <time.h>
 using namespace std;
 
 void Menu();
@@ -22,17 +23,16 @@ int main()
 	readBookingsFile();
 	readRoomsFile();
 
-	string dateTime = "";
+	string dateTime = "1/4/2021";
 
 	int menuOption;
 	while (true) {
-        Menu();
+		Menu();
         cin >> menuOption;
 
         if (menuOption == 1) {
 			string newGuestName, newRoomType, checkInDate, checkOutDate, specialRequests;
 			int noOfGuests;
-
 			cout << endl;
 			cout << "Enter Guest Name : ";
 			cin >> newGuestName;
@@ -51,10 +51,29 @@ int main()
 			bookingsList.add(newBooking);
         }
         else if (menuOption == 2) {
+			string searchGuestName, searchRoomType;
+			int noOfGuests;
+			cout << endl;
+			cout << "Enter Guest Name : ";
+			cin >> searchGuestName;
+			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
+			cin >> searchRoomType;
+			cout << "Enter Number of Guests : ";
+			cin >> noOfGuests;
+
 			// setStatus
 			// assignRoom
         }
         else if (menuOption == 3) {
+			string searchGuestName, searchRoomType;
+			int noOfGuests;
+			cout << endl;
+			cout << "Enter Guest Name : ";
+			cin >> searchGuestName;
+			cout << "Enter Room Type (Standard City View | Deluxe City View | Executive Sea View | President Suite) : ";
+			cin >> searchRoomType;
+			cout << "Enter Number of Guests : ";
+			cin >> noOfGuests;
 			// setStatus
         }
         else if (menuOption == 4) {
@@ -141,6 +160,28 @@ void readBookingsFile() {
 
 	}
 	fin.close();
+}
+
+tm stringToDate(string date) {
+	tm result;
+
+	char aString[10];
+	strcpy(aString, date.c_str());
+
+	sscanf(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
+
+	return result;
+}
+
+tm stringToDateTime(string dateTime) {
+	tm result;
+
+	char aString[20];
+	strcpy(aString, dateTime.c_str());
+
+	sscanf(aString, "%d/%d/%4d  %d:%d:%d", &result.tm_mday, &result.tm_mon, &result.tm_year, &result.tm_hour, &result.tm_min, &result.tm_sec);
+
+	return result;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
