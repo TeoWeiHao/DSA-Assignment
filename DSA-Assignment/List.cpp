@@ -225,8 +225,13 @@ int daysInMonth(int month, int year) {
 }
 
 void List::dateOccupied(int month, int year) {
+	bool occupied[21][32];
+	for (int r = 1; r <= 20; r++) {
+		for (int d = 1; d <= 31; d++) {
+			occupied[r][d] = false;
+		}
+	}
 	Node* current = firstNode;
-	bool occupied[20][31];
 	for (int i = 0; i < size; i++)
 	{
 		tm tmCheckIn = stringToDate(current->item.getCheckIn());
