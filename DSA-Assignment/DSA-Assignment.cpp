@@ -14,6 +14,7 @@ int main()
 	BookingInfo newBooking;
 	BST bst;
 	ItemType target;
+	string newGuestName;
 
 	switch (option)
 	{
