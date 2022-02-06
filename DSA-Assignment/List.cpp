@@ -4,6 +4,9 @@ using namespace std;
 #include "List.h"
 #include "time.h"
 
+tm stringToDate() {
+
+}
 
 List::List()
 {
