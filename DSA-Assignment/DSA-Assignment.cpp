@@ -95,8 +95,8 @@ int main()
 
 			roomNo = roomDict.getAvaliableRoom(roomType, checkInDate, bookingsList);
 
-			bookingsList.get(index).AssignRoomNumber(roomNo);
-			bookingsList.get(index).setStatus("Checked In");
+			bookingsList.AssignRoomNumber(index, roomNo);
+			bookingsList.setStatus(index, "Checked In");
 
 			cout << endl;
 			cout << "Check in is successful" << endl;
@@ -124,7 +124,7 @@ int main()
 			cin >> noOfGuests;
 			
 			index = bookingsList.checkOutSearch(searchGuestName, searchRoomNo, noOfGuests);
-			bookingsList.get(index).setStatus("Checked Out");
+			bookingsList.setStatus(index, "Checked Out");
 
 			cout << endl;
 			cout << "Check out is successful" << endl;

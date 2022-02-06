@@ -48,6 +48,10 @@ public:
 	// return the item in the specified index of the list
 	ItemType get(int index);
 
+	void AssignRoomNumber(int index, string rn);
+
+	void setStatus(int index, string s);
+
 	// check if the list is empty
 	// pre : none
 	// post: none

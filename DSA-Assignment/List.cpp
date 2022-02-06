@@ -94,6 +94,28 @@ ItemType List::get(int index)
 	return current->item;
 }
 
+void List::AssignRoomNumber(int index, string rn)
+{
+
+	Node* current = firstNode;
+	for (int i = 0; i < index;i++)
+	{
+		current = current->next;
+	}
+	current->item.AssignRoomNumber(rn);
+}
+
+void List::setStatus(int index, string s)
+{
+
+	Node* current = firstNode;
+	for (int i = 0; i < index;i++)
+	{
+		current = current->next;
+	}
+	current->item.setStatus(s);
+}
+
 
 
 bool List::isEmpty()
@@ -231,21 +253,23 @@ void List::dateOccupied(int month, int year) {
 			occupied[r][d] = false;
 		}
 	}
-	Node* current = firstNode;
-	for (int i = 0; i < size; i++)
-	{
-		tm tmCheckIn = stringToDate(current->item.getCheckIn());
-		tm tmCheckOut = stringToDate(current->item.getCheckOut());
+	int days = daysInMonth(month, year);
+	for (int day = 1; day <= days; day++) {
+		Node* current = firstNode;
+		for (int i = 0; i < size; i++)
+		{
 
-		int days = daysInMonth(month, year);
-		for (int day = 1; day <= days; day++) {
-			if (tmCheckIn.tm_year < year || (tmCheckIn.tm_year == year && tmCheckIn.tm_mon < month) || (tmCheckIn.tm_year == year && tmCheckIn.tm_mon == month && tmCheckIn.tm_mday == day)) {
-				if (tmCheckOut.tm_year > year || (tmCheckOut.tm_year == year && tmCheckOut.tm_mon > month) || (tmCheckOut.tm_year == year && tmCheckOut.tm_mon == month && tmCheckOut.tm_mday == day)) {
+			tm tmCheckIn = stringToDate(current->item.getCheckIn());
+			tm tmCheckOut = stringToDate(current->item.getCheckOut());
+
+
+			if (tmCheckIn.tm_year < year || (tmCheckIn.tm_year == year && tmCheckIn.tm_mon < month) || (tmCheckIn.tm_year == year && tmCheckIn.tm_mon == month && tmCheckIn.tm_mday <= day)) {
+				if (tmCheckOut.tm_year > year || (tmCheckOut.tm_year == year && tmCheckOut.tm_mon > month) || (tmCheckOut.tm_year == year && tmCheckOut.tm_mon == month && tmCheckOut.tm_mday >= day)) {
 					occupied[stoi(current->item.getRoomNo().substr(current->item.getRoomNo().length() - 2))][day] = true;
 				}
 			}
+			current = current->next;
 		}
-		current = current->next;
 	}
 	for (int r = 1; r <= 20; r++) {
 		cout << "Room " << 100 + r << endl;
