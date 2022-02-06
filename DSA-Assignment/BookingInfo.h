@@ -24,6 +24,8 @@ public:
 
 	void AssignRoomNumber(std::string rn);
 
+	void setStatus(std::string s);
+
 	int getBookingID();
 
 	std::string getBookingDate();
@@ -43,5 +45,7 @@ public:
 	int getGuestsNo();
 
 	std::string getSpecialRequests();
+
+	std::string print();
 };
 
