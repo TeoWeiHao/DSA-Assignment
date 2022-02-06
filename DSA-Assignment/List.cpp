@@ -147,7 +147,10 @@ tm stringToDate(string date) {
 	tm result;
 
 	char aString[10];
-	strcpy_s(aString, date.c_str());
+
+	for (int i = 0; i < dateTime.length(); i++) {
+		aString[i] = dateTime[i];
+	}
 
 	sscanf_s(aString, "%d/%d/%4d", &result.tm_mday, &result.tm_mon, &result.tm_year);
 
@@ -158,7 +161,10 @@ tm stringToDateTime(string dateTime) {
 	tm result;
 
 	char aString[20];
-	strcpy_s(aString, dateTime.c_str());
+
+	for (int i = 0; i < dateTime.length(); i++) {
+		aString[i] = dateTime[i];
+	}
 
 	sscanf_s(aString, "%d/%d/%4d  %d:%d:%d", &result.tm_mday, &result.tm_mon, &result.tm_year, &result.tm_hour, &result.tm_min, &result.tm_sec);
 
