@@ -149,6 +149,7 @@
     <ClInclude Include="BinaryNode.h" />
     <ClInclude Include="BookingInfo.h" />
     <ClInclude Include="BST.h" />
+    <ClInclude Include="RoomNode.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomDictionary.h" />
   </ItemGroup>

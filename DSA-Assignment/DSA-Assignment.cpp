@@ -9,13 +9,17 @@ void Menu();
 
 int main()
 {
-	int option = 0;
+	int option = 1;
 	BookingInfo newBooking;
+	string newGuestName, newRoomType;
 	switch (option)
 	{
 		Menu();
 		cin >> option;
 	case 1:
+		cout << endl;
+		cout << "Enter Guest Name : ";
+		cin >> newGuestName;
 		newBooking = BookingInfo(101, "", "", "", "", "", "", 1,"");
 		break;
 	case 2: ;

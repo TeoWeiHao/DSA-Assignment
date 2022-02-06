@@ -9,6 +9,8 @@ private:
 	int costPerNight;
 
 public:
+	Room();
+
 	Room(std::string rn, std::string rt, int cpn);
 
 	std::string getRoomNo();

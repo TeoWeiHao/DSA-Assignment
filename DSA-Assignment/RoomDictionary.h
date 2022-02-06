@@ -1,27 +1,25 @@
 #pragma once
 #include "Room.h"
 #include <string>
+#include "RoomNode.h"
 
 const int MAX_SIZE = 4;
 
-struct Node
-{
-	std::string key;
-	Room item;
-	Node* next;
-};
 class RoomDictionary
 {
 private:
-	Node* items[MAX_SIZE];
+
+	RoomNode* items[MAX_SIZE];
 	int size;
 
 public:
 	RoomDictionary();
 
-	int hash(std::string key);
+	~RoomDictionary();
 
-	void add(std::string newKey, Room newRoom);
+	int hash(KeyType key);
+
+	void add(KeyType newKey, ItemType newRoom);
 
 	int getLength();
 
